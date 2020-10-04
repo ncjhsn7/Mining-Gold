@@ -1,6 +1,6 @@
 # -------------------------------------------------------
 
-txt = open("x3.txt", "r")
+txt = open("casoPDF.txt", "r")
 boardLength = txt.readline()
 board = [[0 for i in range(int(boardLength))] for j in range(int(boardLength))]
 i = 0
@@ -68,7 +68,6 @@ def mining2(x, y):
             else:
                 goldValue = ne + board[x][y]
                 savePath[(x, y)] = (goldValue, "NE")
-
     return savePath[(x, y)]
 
 
@@ -120,12 +119,13 @@ def mining3():
                         goldValue = ne + board[x][y]
                         board2[x][y] = (goldValue, "NE")
     returnPath2(boardLength-1, 0)
+    return goldValue
 
 
 directions2 = []
 def returnPath2(x, y):
-    for i in x:
-        for j in y:
+    for i in range(1,boardLength-1,1):
+        for j in range(1,0,1):
             print(board2[i][j])
 
     if x == 0 and y == boardLength - 1:
@@ -143,9 +143,9 @@ def returnPath2(x, y):
             returnPath2(x-1, y+1)
 
 # -----------------------------------------
-# print(mining1(boardLength-1, 0))
-# print()
-# print(mining2(boardLength-1, 0)[0])
-# print(returnPath(boardLength-1, 0))
-# print()
+print(mining1(boardLength-1, 0))
+print()
+print(mining2(boardLength-1, 0)[0])
+print(returnPath(boardLength-1, 0))
+print()
 print(mining3())
