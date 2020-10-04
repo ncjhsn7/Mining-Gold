@@ -146,6 +146,6 @@ def returnPath2(x, y):
 print(mining1(boardLength-1, 0))
 print()
 print(mining2(boardLength-1, 0)[0])
-print(returnPath(boardLength-1, 0))
+returnPath(boardLength-1, 0)
 print()
 print(mining3())
