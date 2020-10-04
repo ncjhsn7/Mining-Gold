@@ -1,6 +1,6 @@
 # -------------------------------------------------------
 
-txt = open("caso3x3.txt", "r")
+txt = open("x3.txt", "r")
 boardLength = txt.readline()
 board = [[0 for i in range(int(boardLength))] for j in range(int(boardLength))]
 i = 0
@@ -88,10 +88,7 @@ def returnPath(x, y):
 
 # -----------------------------------------
 
-
 board2 = [[0 for i in range(int(boardLength))] for j in range(int(boardLength))]
-
-
 def mining3():
     lastMove = board[0][boardLength-1]
     board2[0][boardLength-1] = (lastMove, " ")
@@ -103,7 +100,7 @@ def mining3():
                     a = board[x][y] + board2[x][y+1][0]
                     board2[x][y] = (a, "E")
                 elif y == boardLength-1:
-                    b = board[x][y] + board2[x+1][y][0]
+                    b = board[x][y] + board2[x-1][y][0]
                     board2[x][y] = (b, "N")
                 else:
                     n = board2[x-1][y][0]
@@ -122,13 +119,13 @@ def mining3():
                     else:
                         goldValue = ne + board[x][y]
                         board2[x][y] = (goldValue, "NE")
-    # returnPath2(boardLength-1, 0)
+    returnPath2(boardLength-1, 0)
 
 
 directions2 = []
 def returnPath2(x, y):
     for i in x:
-        for j in x:
+        for j in y:
             print(board2[i][j])
 
     if x == 0 and y == boardLength - 1:
@@ -145,11 +142,10 @@ def returnPath2(x, y):
         if d == "NE":
             returnPath2(x-1, y+1)
 
-
 # -----------------------------------------
-print(mining1(boardLength-1, 0))
-print()
-print(mining2(boardLength-1, 0)[0])
-print(returnPath(boardLength-1, 0))
-print()
+# print(mining1(boardLength-1, 0))
+# print()
+# print(mining2(boardLength-1, 0)[0])
+# print(returnPath(boardLength-1, 0))
+# print()
 print(mining3())
